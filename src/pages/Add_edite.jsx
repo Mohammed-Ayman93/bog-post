@@ -30,7 +30,6 @@ export default function Add_edite() {
       const image = form.get("image");
       const Imagedata = new FormData();
       Imagedata.append("image", image);
-      console.log(Imagedata);
       const { data } = await axios.post(
         "https://api.imgbb.com/1/upload?key=808976a7ea3d13b80a0551fe7c161438",
         Imagedata,

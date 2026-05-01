@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { api } from "../App";
 
 export default function Register() {
   // ------------------ States ----------------------- //
@@ -17,17 +18,18 @@ export default function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    try {
     const form = new FormData(event.target);
     const image = form.get("image");
     const Imagedata = new FormData();
-    Imagedata.append("image", image);
-    try {
+    Imagedata.append("image", image);      
       const { data } = await axios.post(
-        "https://api.imgbb.com/1/upload?key=2a984cae3652108793fac192ed3b265b",
+        "https://api.imgbb.com/1/upload?key=808976a7ea3d13b80a0551fe7c161438",
         Imagedata,
       );
       const userData = { ...user, profilePic: data.data.url };
-      const newUser = await axios.post(
+    
+      const newUser = await api.post(
         "http://localhost:3000/auth/register",
         userData,
       );

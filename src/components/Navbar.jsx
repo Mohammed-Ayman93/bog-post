@@ -39,23 +39,7 @@ export default function Navbar() {
                     {currentUser.name}
                   </p>
                 </li>
-                <div className="divider my-1"></div>
-                <li>
-                  <Link
-                    href="/profile"
-                    className="rounded-lg hover:bg-gray-100"
-                  >
-                    Profile
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/my-posts"
-                    className="rounded-lg hover:bg-gray-100"
-                  >
-                    My Posts
-                  </Link>
-                </li>
+
                 <div className="divider my-1"></div>
                 <li>
                   <button

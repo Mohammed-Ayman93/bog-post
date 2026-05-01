@@ -60,7 +60,7 @@ export default function Login() {
             <p className="text-center text-sm text-gray-500">
               Don’t have an account?
               <Link
-                href="/register"
+                to="/register"
                 className="text-blue-600 hover:underline font-medium"
               >
                 Register now
@@ -68,7 +68,6 @@ export default function Login() {
             </p>
           </div>
         </div>
-        <p className="text-center text-xs text-gray-400 mt-4">© 2026 Blogify</p>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { AuthContext } from "../App";
 export default function Post({ posts, loading }) {
   // ------------------ States ----------------------- //
 
-  const { currentUser, handleDelete } = useContext(AuthContext);
+  const { currentUser, handleDelete, err } = useContext(AuthContext);
   const param = useParams();
   const post = posts.filter((p) => p._id === param.id);
 
@@ -15,10 +15,30 @@ export default function Post({ posts, loading }) {
     return (
       <span className="loading loading-ring loading-xl text-primary mt-48"></span>
     );
+
+  if (err)
+    return (
+      <div role="alert" className="alert alert-error w-3/4 mx-auto my-44">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 shrink-0 stroke-current"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>{err}</span>
+      </div>
+    );
   return (
     <div className="bg-gray-50 min-h-screen py-10 px-4">
       <p className="w-3xl mx-auto my-5 ps-6 md:ps-10 ">
-        <Link to="/" className="link-hover link-accent">
+        <Link to="/" className="link-hover underline">
           All Posts
         </Link>{" "}
         / <span className="text-blue-700">{post[0].title}</span>
@@ -55,13 +75,13 @@ export default function Post({ posts, loading }) {
                 onClick={() => {
                   handleDelete(post[0]._id);
                 }}
-                className="btn btn-error btn-outline btn-sm"
+                className="btn bg-red-600 text-white px-2 hover:bg-white hover:text-red-700 border hover:border-red-800 btn-sm"
               >
                 Delete
               </button>
               <Link
                 to={`/add_edit_post/?data=${JSON.stringify(post[0])}`}
-                className="btn btn-info btn-outline btn-sm"
+                            className="btn bg-info text-stone-50 hover:bg-white hover:text-cyan-700 border hover:border-cyan-800 btn-sm"
               >
                 Edit
               </Link>

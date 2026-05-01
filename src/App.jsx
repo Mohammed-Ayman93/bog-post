@@ -41,9 +41,9 @@ api.interceptors.response.use(
 
 function App() {
   // ------------------ States ----------------------- //
-document.documentElement.setAttribute("data-theme", "light");
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [err , setErr] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
   const navegate = useNavigate();
   const [user, setUser] = useState({
@@ -64,7 +64,7 @@ document.documentElement.setAttribute("data-theme", "light");
         const { data } = await api.get("/posts");
         setPosts(data);
       } catch (err) {
-        console.log(err.message);
+        setErr(err.message)
       } finally {
         setLoading(false);
       }
@@ -104,6 +104,7 @@ document.documentElement.setAttribute("data-theme", "light");
   };
 
   // ------------------ UI ----------------------- //
+document.documentElement.setAttribute("data-theme", "light");
 
   return (
     <AuthContext.Provider
@@ -114,6 +115,7 @@ document.documentElement.setAttribute("data-theme", "light");
         handleDelete,
         setUser,
         user,
+        err
       }}
     >
       <Navbar />
