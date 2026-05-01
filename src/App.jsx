@@ -41,7 +41,7 @@ api.interceptors.response.use(
 
 function App() {
   // ------------------ States ----------------------- //
-
+document.documentElement.setAttribute("data-theme", "light");
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
