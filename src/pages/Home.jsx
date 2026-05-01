@@ -4,7 +4,6 @@ import { AuthContext } from "../App";
 
 export default function Home({ posts, loading }) {
   // ------------------ States ----------------------- //
-
   const navigate = useNavigate();
   const { currentUser, handleDelete, err } = useContext(AuthContext);
   const [searchParams] = useSearchParams();
