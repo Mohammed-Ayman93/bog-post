@@ -21,7 +21,7 @@ export const AuthContext = createContext();
 // ------------------ api ----------------------- //
 
   export const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
+    baseURL: "https://bog-post-be.vercel.app/",
     withCredentials: true,
   });
 api.interceptors.response.use(
