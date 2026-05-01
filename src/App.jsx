@@ -19,7 +19,6 @@ import Post from "./pages/Post";
 export const AuthContext = createContext();
 
 // ------------------ api ----------------------- //
-
   export const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
     withCredentials: true,
